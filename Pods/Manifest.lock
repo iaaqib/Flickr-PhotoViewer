@@ -1,0 +1,18 @@
+PODS:
+  - FlickrKit (1.0.9)
+  - MapleBacon (3.0.1)
+  - Toast (3.1.0)
+
+DEPENDENCIES:
+  - FlickrKit
+  - MapleBacon
+  - Toast (~> 3.1.0)
+
+SPEC CHECKSUMS:
+  FlickrKit: 79ffaf64a12293ba2b1aa8a2e53a4958cb113256
+  MapleBacon: 8fb0c45a0f147049ad49af6b36ac04a649baa74d
+  Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
+
+PODFILE CHECKSUM: 4abeeb39a7a50c200b83493ea04e64c4cd774f3f
+
+COCOAPODS: 1.1.1
