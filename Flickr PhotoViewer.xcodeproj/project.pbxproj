@@ -272,6 +272,7 @@
 				TargetAttributes = {
 					7B622EB21E8FABA4009A3E15 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = F92WBSNLJ3;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -518,7 +519,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = F92WBSNLJ3;
 				INFOPLIST_FILE = "Flickr PhotoViewer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "app.KodeSnippets.Flickr-PhotoViewer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -534,7 +538,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = F92WBSNLJ3;
 				INFOPLIST_FILE = "Flickr PhotoViewer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "app.KodeSnippets.Flickr-PhotoViewer";
 				PRODUCT_NAME = "$(TARGET_NAME)";

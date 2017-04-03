@@ -52,7 +52,7 @@ class ImagePreviewViewController: UIViewController {
     //Save image to user device
     @IBAction func savePictureToDevice(_ sender: UIBarButtonItem){
         
-        if PHPhotoLibrary.authorizationStatus() == .denied || PHPhotoLibrary.authorizationStatus() == .notDetermined{
+        if PHPhotoLibrary.authorizationStatus() == .denied {
             Util.showAlert(sender: self, title: "Permission Denied", message: "You might have previously denied the permission. Please go to Settings and Allow Photos permission for the app.")
             
         }

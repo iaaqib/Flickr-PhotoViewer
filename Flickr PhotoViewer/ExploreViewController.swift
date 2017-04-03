@@ -8,6 +8,7 @@
 
 import UIKit
 import Toast
+import FlickrKit
 
 class ExploreViewController: UIViewController{
     
@@ -20,15 +21,50 @@ class ExploreViewController: UIViewController{
     //Holds the selected Index
     var selectedCell : Int!
     
+    //Reachability
+    var reachability : FKReachability!
+    
     //MARK: View Loadings
     override func viewDidLoad() {
         
+        
+        self.reachability  = FKReachability(hostName:"www.google.com")
+        self.reachability.startNotifier()
+        
         //Pull down Refresher
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(self.fetchImages), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(self.refreshControl), for: .valueChanged)
         self.collectionView.addSubview(refreshControl)
         
         self.fetchImages()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+    //For Reachability check
+    NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged), name: NSNotification.Name(rawValue: kReachabilityChangedNotification), object: nil)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    //MARK: Action
+    @IBAction func refreshControl(_ sender : UIRefreshControl){
+        
+        self.fetchImages()
+        
+        DispatchQueue.main.async{
+            
+            sender.endRefreshing()
+            
+        }
+        
+    }
+    //MARK: Notification
+    func reachabilityChanged(notification: Notification){
+        if let notifier  = notification.object as? FKReachability{
+        if notifier.currentReachabilityStatus() != NotReachable{
+        
+        self.fetchImages()
+        }
+        }
     }
     //MARK: Functions
     //Fetches images from Interestingness through Model Object

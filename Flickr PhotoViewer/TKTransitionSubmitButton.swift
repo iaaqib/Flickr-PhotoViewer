@@ -125,12 +125,13 @@ public class TKTransitionSubmitButton : UIButton, UIViewControllerTransitioningD
                 self.backgroundColor = UIColor.clear
             }
         }
-        
+
         self.layer.removeAllAnimations()
         self.setTitle(self.cachedTitle, for: .normal)
         self.setImage(self.cachedImage, for: .normal)
         self.spiner.stopAnimation()
         self.layer.cornerRadius = 5.0
+     
     }
     
     func shrink() {

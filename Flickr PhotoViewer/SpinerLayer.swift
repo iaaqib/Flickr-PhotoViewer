@@ -56,7 +56,10 @@ class SpinerLayer: CAShapeLayer {
     }
     
     func stopAnimation() {
-        self.isHidden = true
-        self.removeAllAnimations()
+        DispatchQueue.main.async { 
+            self.isHidden = true
+            self.removeAllAnimations()
+        }
+        
     }
 }

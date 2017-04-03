@@ -59,6 +59,9 @@ class FlickrHelper {
                         return
                     }
                     
+                    if message.contains("There isn\'t a stored token to check. Login first."){
+                    User.userDefaults.removeObject(forKey: User.tokenKey)
+                    }
                     Util.showAlert(sender: sender, title: "Error", message: message)
                     
                     completionHandler(error as? NSError)

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -49,7 +48,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="wxj-9T-a6p" kind="show" id="M17-X6-q22"/>
+                                    <action selector="loginRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RGP-ES-MBk"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flickr-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="6dg-kP-8JE">
@@ -81,6 +80,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="loginButton" destination="jfA-R0-MOB" id="5hC-6s-vTk"/>
+                        <segue destination="wxj-9T-a6p" kind="show" identifier="auth" id="PoX-bs-2LU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

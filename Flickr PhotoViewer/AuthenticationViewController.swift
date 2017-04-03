@@ -23,6 +23,7 @@ class AuthenticationViewController: UIViewController, UIWebViewDelegate {
     //MARK: View Loading Functions
     
     override func viewDidLoad() {
+        
         self.navigationController?.navigationBar.isHidden = false
         
     }

@@ -9,7 +9,7 @@
 import UIKit
 import Toast
 import FlickrKit
-
+import Photos
 class ProfileViewController: UIViewController{
     
     //MARK: Outlets
@@ -22,7 +22,8 @@ class ProfileViewController: UIViewController{
     var photoURLs : [URL?]?
     //Holds the selected Index
     var selectedCell : Int!
-    
+    //Reachability
+    var reachability : FKReachability!
     
     //MARK: View Loadings
     override func viewDidLoad() {
@@ -32,12 +33,32 @@ class ProfileViewController: UIViewController{
             self.name.text = "Welcome\n\(name)!"
             self.userName.text = userName
         }
+        //Setup reachability
+        self.reachability  = FKReachability(hostName:"www.google.com")
+        self.reachability.startNotifier()
+        
         //Full Down Refresher
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(self.fetchImages), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(self.refreshControl), for: .valueChanged)
         self.collectionView.addSubview(refreshControl)
         
         self.fetchImages()
+        
+        //Ask for Photos Permission
+        if PHPhotoLibrary.authorizationStatus() == .notDetermined {
+        PHPhotoLibrary.requestAuthorization({ (status) in
+            
+        })
+        
+        }
+
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        //For Reachability check
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged), name: NSNotification.Name(rawValue: kReachabilityChangedNotification), object: nil)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
     }
     
     //MARK: Action
@@ -46,7 +67,27 @@ class ProfileViewController: UIViewController{
         self.showConfirmationAlert()
         
     }
+    @IBAction func refreshControl(_ sender : UIRefreshControl){
+        
+        self.fetchImages()
+        
+        DispatchQueue.main.async{
+        
+        sender.endRefreshing()
+        
+        }
+        
+    }
     
+    //MARK: Notification
+    func reachabilityChanged(notification: Notification){
+        if let notifier  = notification.object as? FKReachability{
+            if notifier.currentReachabilityStatus() != NotReachable{
+                
+                self.fetchImages()
+            }
+        }
+    }
     //MARK: Functions
     //Fetches images from user profile through Model Object
     func fetchImages(){
