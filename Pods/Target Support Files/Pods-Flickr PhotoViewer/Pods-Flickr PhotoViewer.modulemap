@@ -1,0 +1,6 @@
+framework module Pods_Flickr_PhotoViewer {
+  umbrella header "Pods-Flickr PhotoViewer-umbrella.h"
+
+  export *
+  module * { export * }
+}
